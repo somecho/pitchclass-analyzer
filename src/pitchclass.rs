@@ -1,4 +1,4 @@
-use crate::sortable::*;
+//use crate::sortable::*;
 
 pub struct PitchClassSet {
     pub set: Vec<i32>
@@ -8,9 +8,7 @@ impl PitchClassSet {
     pub fn from(input: &String)->PitchClassSet {
         let set = input.split(" ")
         .map(|pitch| name_to_pitchclass(pitch))
-        .collect::<Vec<i32>>()
-        .remove_dup()
-        .ascending();
+        .collect::<Vec<i32>>();
         PitchClassSet {
             set
         }
