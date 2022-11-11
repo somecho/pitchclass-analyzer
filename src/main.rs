@@ -2,8 +2,8 @@ mod print;
 mod sortable;
 mod pitchclass;
 use pitchclass::*;
-mod ListFunctions;
-use ListFunctions::*;
+mod list_functions;
+use list_functions::*;
 use std::env;
 use print::Print;
 
