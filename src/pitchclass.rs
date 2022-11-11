@@ -1,5 +1,3 @@
-//use crate::sortable::*;
-
 pub struct PitchClassSet {
     pub set: Vec<i32>
 }
