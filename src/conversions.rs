@@ -1,19 +1,5 @@
-pub struct PitchClassSet {
-    pub set: Vec<i32>
-}
 
-impl PitchClassSet {
-    pub fn from(input: &String)->PitchClassSet {
-        let set = input.split(" ")
-        .map(|pitch| name_to_pitchclass(pitch))
-        .collect::<Vec<i32>>();
-        PitchClassSet {
-            set
-        }
-    }
-}
-
-fn name_to_pitchclass(name: &str) -> i32 {
+pub fn name_to_pitchclass(name: &str) -> i32 {
     match name {
         "B#" | "C" | "Dbb" => 0,
         "B##" | "C#" | "Db" => 1,
@@ -32,4 +18,25 @@ fn name_to_pitchclass(name: &str) -> i32 {
             std::process::exit(1);
         }
     }
+}
+pub fn pitchclass_to_name(pc: &i32)->&str{
+    match pc {
+        0 => "C",
+        1 => "C#",
+        2 => "D",
+        3 => "D#",
+        4 => "E",
+        5 => "F",
+        6 => "F#",
+        7 => "G",
+        8 => "G#",
+        9 => "A",
+        10 => "A#",
+        11 => "B",
+        _ => {
+            println!("{} is not a valid pitch class.",pc);
+            std::process::exit(1);
+        }
+    }
+
 }

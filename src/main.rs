@@ -1,12 +1,22 @@
-mod print;
-mod pitchclass;
-mod list_functions;
-use pitchclass::*;
-use list_functions::*;
+mod operations;
+mod conversions;
+mod pitch_class_set;
+use operations::*;
+use pitch_class_set::*;
 use std::env;
-use print::Print;
 
 fn main() {
+    let pitchnames = String::from("C D F F# A");
+    let pc = PitchClassSet::from(&pitchnames);
+    pc.normal_order().print_names();
+    pc.prime_form().print_names();
+
+
+    // println!("{}",-3%10);
+    // println!("{:?}",permuts);
+    // println!("{:?}",scores);
+
+
     //let args: Vec<String> = env::args().collect();
     //let command = &args[1];
     // match command.as_ref() {
@@ -16,8 +26,4 @@ fn main() {
     //         std::process::exit(1);
     //     }
     // }
-    let a: Vec<i32> = vec![6,9,1,2,3];
-    let b: Vec<Vec<i32>> = a.circular_permutations();
-    println!("{:?}",a);
-    println!("{:?}",b);
 }
