@@ -1,0 +1,4 @@
+* Pitch Class Analyzer
+
+This is a hobby project for learning Rust as well as implementing concepts
+introduced in Allen Forte's The Structure of Atonal Music.
