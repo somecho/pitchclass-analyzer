@@ -8,8 +8,8 @@ use std::env;
 fn main() {
     let pitchnames = String::from("B C D F F# A");
     let pc = PitchClassSet::from(&pitchnames);
-    pc.set().print();
-    pc.ordered().print();
+    pc.set().print_names();
+    pc.set().transpose(-1).print_names();
 
 
     // println!("{}",-3%10);

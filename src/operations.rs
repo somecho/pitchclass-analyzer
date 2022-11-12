@@ -1,5 +1,6 @@
 use std::collections::HashSet;
 use std::iter::zip;
+use crate::pitch_class_set::wrap_modulo;
 
 use crate::conversions::pitchclass_to_name;
 pub trait Operations {
@@ -10,6 +11,8 @@ pub trait Operations {
     fn distance_score(&self) -> i32;
     fn print(&self);
     fn print_names(&self);
+    fn inverse(&self)->Vec<i32>;
+    fn transpose(&self,t:i32)->Vec<i32>;
 }
 
 impl Operations for Vec<i32> {
@@ -35,6 +38,13 @@ impl Operations for Vec<i32> {
     }
     fn distance_score(&self) -> i32 {
         self.iter().map(|p| (p - self[0]).abs()).sum()
+    }
+    fn transpose(&self,t:i32)->Vec<i32>{
+        self.iter().map(|pc|wrap_modulo(&(pc+t),&12)).collect::<Vec<i32>>()
+
+    }
+    fn inverse(&self)->Vec<i32> {
+        self.iter().map(|pc|(12-pc)%12).collect::<Vec<i32>>()
     }
     fn ascending(&self) -> Vec<i32> {
         let mut out = self.clone();
