@@ -6,11 +6,12 @@ use pitch_class_set::*;
 use std::env;
 
 fn main() {
-    let pitchnames = String::from("B C D F F# A");
-    let pc = PitchClassSet::from(&pitchnames);
-    pc.set().print_names();
-    pc.set().transpose(-1).print_names();
+    let pc = PitchClassSet::from_vec(&vec![3,4,7,10]);
+    let pc2 = PitchClassSet::from_vec(&pc.set().inverse());
+    pc.set().print();
+    pc2.set().transpose(11).print();
 
+    
 
     // println!("{}",-3%10);
     // println!("{:?}",permuts);

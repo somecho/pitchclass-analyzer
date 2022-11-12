@@ -13,6 +13,8 @@ pub trait Operations {
     fn print_names(&self);
     fn inverse(&self)->Vec<i32>;
     fn transpose(&self,t:i32)->Vec<i32>;
+    fn descending(&self)->Vec<i32>;
+    fn as_reversed(&self)->Vec<i32>;
 }
 
 impl Operations for Vec<i32> {
@@ -51,11 +53,17 @@ impl Operations for Vec<i32> {
         out.sort();
         out
     }
+    fn descending(&self)->Vec<i32> {
+        self.ascending().as_reversed()
+    }
     fn remove_dup(&self) -> Vec<i32> {
         self.clone().into_iter()
             .collect::<HashSet<i32>>()
             .into_iter()
             .collect::<Vec<i32>>()
+    }
+    fn as_reversed(&self)->Vec<i32>{
+        self.clone().into_iter().rev().collect()
     }
 
     fn print(&self) {
@@ -69,5 +77,28 @@ impl Operations for Vec<i32> {
             print!("{} ",pitchclass_to_name(pc));
         }
         print!("\n ")
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn ascending(){
+        let a = vec![8,5,4,7,9,2,3,6,1];
+        let b = vec![1,2,3,4,5,6,7,8,9];
+        assert_eq!(a.ascending(),b);
+    }
+    #[test]
+    fn remove_dup(){
+        let a = vec![1,1,3,3,1,2,2,4,5];
+        let b = vec![1,2,3,4,5];
+        assert_eq!(a.remove_dup().ascending(),b);
+    }
+    #[test]
+    fn inverse(){
+        let a = vec![0,1,2,3,4,5,6,7,8,9,10,11];
+        let b = vec![0,11,10,9,8,7,6,5,4,3,2,1];
+        assert_eq!(a.inverse(),b);
     }
 }
