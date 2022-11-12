@@ -6,10 +6,10 @@ use pitch_class_set::*;
 use std::env;
 
 fn main() {
-    let pitchnames = String::from("C D F F# A");
+    let pitchnames = String::from("B C D F F# A");
     let pc = PitchClassSet::from(&pitchnames);
-    pc.normal_order().print_names();
-    pc.prime_form().print_names();
+    pc.set().print();
+    pc.ordered().print();
 
 
     // println!("{}",-3%10);

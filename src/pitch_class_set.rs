@@ -12,6 +12,9 @@ impl PitchClassSet {
     pub fn set(&self)->&Vec<i32>{
         &self.pitch_class_set
     }
+    pub fn ordered(&self)->Vec<i32>{
+        self.pitch_class_set.ascending()
+    }
     pub fn from(input: &String)->PitchClassSet {
         let pitch_class_set = input.split(" ")
         .map(|pitch| name_to_pitchclass(pitch))
