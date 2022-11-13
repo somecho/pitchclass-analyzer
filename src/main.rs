@@ -7,9 +7,9 @@ use std::env;
 
 fn main() {
     let pc = PitchClassSet::from_vec(&vec![3,4,7,10]);
-    let pc2 = PitchClassSet::from_vec(&pc.set().inverse());
-    pc.set().print();
-    pc2.set().transpose(11).print();
+    let pc2 = PitchClassSet::from_vec(&vec![4,2,8,11]);
+    let e = pc.transposition_eq(&pc2);
+    println!("{}",e);
 
     
 

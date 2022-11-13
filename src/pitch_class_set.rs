@@ -59,6 +59,24 @@ impl PitchClassSet {
             .collect::<HashSet<i32>>();
         c.len() == 1
     }
+    pub fn transposition_eq(&self, other: &PitchClassSet) -> bool {
+        if self.set().len() != other.set().len() {
+            panic!("The pitchsets are not the same size.");
+        }
+        let a = self
+            .set()
+            .ascending()
+            .into_iter()
+            .map(|pc| (pc - self.set()[0]) % 12)
+            .collect::<Vec<i32>>();
+        let b = other
+            .set()
+            .ascending()
+            .into_iter()
+            .map(|pc| (pc - other.set()[0]) % 12)
+            .collect::<Vec<i32>>();
+        a == b
+    }
     pub fn interval_vector(&self) -> Vec<i32> {
         let mut intervals: Vec<i32> = Vec::new();
         let size = self.pitch_class_set.len();
